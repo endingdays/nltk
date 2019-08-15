@@ -2,6 +2,7 @@
 Working, hustling and playing with nltk - the jorney I began more than a year ago, but decided to go back with all my eagerness
 
 All credits and shoutouts to these guys: https://www.nltk.org/book/
+A token is the technical name for a sequence of characters — such as hairy, his, or :) — that we want to treat as a group.
 
 
 Before going further you should install NLTK 3.0:
