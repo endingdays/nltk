@@ -14,8 +14,6 @@
 
 
 # ********** START: Block For Functions
-
-
 def lexical_diversity(text):
     return len(set(text)) / len(text)
 
@@ -29,6 +27,8 @@ def percentage(text, word):
 from nltk.book import *
 
 print('\nThis is text1: ', text1)
+
+"""
 
 # concordance view shows us every occurrence of a given word, together with some context
 print('\nCONCORDANCE: ')
@@ -60,6 +60,39 @@ print('\nRichness of vocabulary in text3: ', lexical_diversity(text3))
 
 # how often a word occurs in a text, and what percentage of the text is taken up by a specific word
 print('\nHow often a word occurs in a text: ', text5.count("here"))
-print('what percentage of the text is taken up by a specific word: ', percentage(text5, 'lol'))
+print('\nWhat percentage of the text is taken up by a specific word: ', percentage(text5, 'lol'))
 
 
+
+# frequency distribution tells us the frequency of each vocabulary item in the text
+fdist1 = FreqDist(text1)
+# inspecting the total number of words ("outcomes")
+print('\nFrequency distribution of text1: ', fdist1)
+#  most_common(50) gives us a list of the 50 most frequently occurring types in the text
+print('\nMost common tokens are : ', fdist1.most_common(50))
+
+# cumulative frequency plot for these words
+fdist1.plot(50, cumulative=True)
+#  the words that occur once only,
+print('\nhapaxes: ', fdist1.hapaxes())
+"""
+#  let's look at the long words of a text, that are > 15
+V = set(text7)
+long_words = [w for w in V if len(w) > 10]
+print('\nOur long words: ', sorted(long_words))
+
+fdist5 = FreqDist(text5)
+# making sure  that the words are longer than seven letters, and ooccur more than seven times
+print('\nwords from the chat corpus that are longer than seven characters, that occur more than seven times: ',
+      sorted(w for w in set(text5) if len(w) > 7 and fdist5[w] > 7))
+
+# collocation is a sequence of words that occur together unusually often: red whine, hot water etc.
+# To get a handle on collocations, start off by extracting from a text a list of word pairs, also known as bigrams
+print('\nBigrams: ', list(bigrams(['water', 'hot', 'red', 'whine', 'cold', 'weather'])))
+
+print('\nCounting length of each word in a text: ', [len(w) for w in text1])
+fdist = FreqDist(len(w) for w in text1)
+# how frequent the different lengths of word are
+print('\nHow frequent the different lengths of word are', fdist.most_common())
+print('\nThe most frequent word\'s length is: ', fdist.max())
+print('\nPercentage of the msx\'s word: ', fdist.freq(3))
