@@ -37,3 +37,13 @@ fdist1 = nltk.FreqDist(w.lower() for w in news_text if w.startswith('wh'))
 wh_words = ['what', 'where', 'why', 'when', 'who']
 for m in wh_words:
     print(m + ':', fdist1[m], end=' ')
+
+
+print('\nConditional frequency distribution: \n')
+# A conditional frequency distribution needs to pair each event with a condition
+# Each pair has the form (condition, event) -> here condition is NEWS AND ROMANCE, and event a WORD
+genre_word = [(genre, word) for genre in ['news', 'romance'] for word in brown.words(categories=genre)]
+print('len(genre_word): ', len(genre_word), ', genre_word[:4]: ', genre_word[:4])
+cfd = nltk.ConditionalFreqDist(genre_word)
+print("cfd['romance'].most_common(20): ", cfd['romance'].most_common(20))
+print("\ncfd['romance']['to']: ", cfd['romance']['to'])
