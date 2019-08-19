@@ -18,6 +18,7 @@ random.shuffle(labeled_names)
 # training set and a test set. The training set is used to train a new "naive Bayes" classifier.
 featuresets = [(gender_features(n), gender) for (n, gender) in labeled_names]
 
-train_set, test_set = featuresets[500:], featuresets[:500]
+train_set, test_set = featuresets[300:], featuresets[:300]
 classifier = nltk.NaiveBayesClassifier.train(train_set)
 print(classifier.classify(gender_features('Pasha')))
+print(nltk.classify.accuracy(classifier, test_set))
