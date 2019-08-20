@@ -1,6 +1,8 @@
 # nltk
 Working, hustling and playing with nltk - the jorney I began more than a year ago, but decided to go back with all my eagerness
 
+nltk - is a free Machine Learning library for NLP (Native Language Processing)
+
 All credits and shoutouts to these guys: https://www.nltk.org/book/
 A token is the technical name for a sequence of characters — such as hairy, his, or :) — that we want to treat as a group.
 
